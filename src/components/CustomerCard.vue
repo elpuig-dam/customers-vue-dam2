@@ -10,18 +10,15 @@ const props = defineProps( {
 </script>
 
 <template>
-    <div class="customer-card" v-if="props.customer">
-      <div class="card-header">
+    
         <div class="avatar">
           {{ props.customer.firstName.charAt(0) }}{{ props.customer.lastName.charAt(0) }}
         </div>
         <div class="header-info">
           <h3>{{ props.customer.firstName }} {{ props.customer.lastName }}</h3>
-          <span class="id-badge">ID: #{{ props.customer.id }}</span>
         </div>
-      </div>
     
-    <div class="card-body">
+    
       <div class="info-item">
         <span class="label">Email</span>
         <span class="value">{{ props.customer.email }}</span>
@@ -32,32 +29,10 @@ const props = defineProps( {
           {{ props.customer.incidencies?.length || 0 }} assignades
         </span>
       </div>
-    </div>   
-  </div>
+ 
 </template>
 
 <style scoped>
-.customer-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  padding: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: 1px solid #f0f0f0;
-  max-width: 350px;
-}
-
-.customer-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
 
 .avatar {
   width: 48px;
@@ -98,10 +73,9 @@ const props = defineProps( {
 }
 
 .label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.15rem;
   color: #9ca3af;
-  letter-spacing: 0.05em;
 }
 
 .value {
@@ -118,20 +92,5 @@ const props = defineProps( {
 .status-tag.active { color: #059669; font-weight: 500; }
 .status-tag.empty { color: #9ca3af; }
 
-.btn-detail {
-  width: 100%;
-  margin-top: 1.5rem;
-  padding: 0.6rem;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s;
-}
 
-.btn-detail:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
-}
 </style>
