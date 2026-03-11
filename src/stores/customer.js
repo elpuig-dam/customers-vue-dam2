@@ -22,17 +22,32 @@ export const useCustomerStore = defineStore("customers", () => {
             console.log("error intentant carregar dades", e);
         }finally {
             loading.value = false;
-        }
-        
+        }        
     }
 
+    const addCustomer = async (newCustomer) => {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newCustomer)
+        });
+    
+        if (response.ok) {
+            const data = await response.json();
+            console.log("nou client:", data);
 
+            customers.value.push(data); // Actualitzem la llista sense recarregar la pàgina
+        }
+    }
 
     return {
         customers,
         loading,
         error,
-        getCustomers
+        getCustomers,
+        addCustomer
 
     }
 });

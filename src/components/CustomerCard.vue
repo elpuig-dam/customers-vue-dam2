@@ -10,9 +10,9 @@ const props = defineProps( {
 </script>
 
 <template>
-    
+    <div v-if="props.customer">
         <div class="avatar">
-          {{ props.customer.firstName.charAt(0) }}{{ props.customer.lastName.charAt(0) }}
+          {{ props.customer.firstName?.charAt(0) }}{{ props.customer.lastName?.charAt(0) }}
         </div>
         {{ props.customer.firstName }} {{ props.customer.lastName }}
         <span class="value">{{ props.customer.email }}</span>
@@ -20,6 +20,7 @@ const props = defineProps( {
         <span :class="['status-tag', props.customer.incidencies?.length > 0 ? 'active' : 'empty']">
           {{ props.customer.incidencies?.length || 0 }} assignades
         </span>
+    </div>
  
 </template>
 

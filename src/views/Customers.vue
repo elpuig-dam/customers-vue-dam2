@@ -3,6 +3,7 @@ import { onMounted } from 'vue';
 import HeaderComponent from '../components/HeaderComponent.vue';
 import { useCustomerStore } from '../stores/customer';
 import CustomerCard from '../components/CustomerCard.vue';
+import FormCustomer from '../components/FormCustomer.vue';
 
 
 const customerStore = useCustomerStore();
@@ -17,6 +18,7 @@ onMounted(async () => {
 <template>
     <HeaderComponent />
     <section id="customers-page">
+        <FormCustomer />
         <h2>Customer page</h2>
         <h3 v-if="customerStore.loading">Carregant...</h3>
         <h3 v-else-if="customerStore.error">Alguna cosa ha fallat</h3>

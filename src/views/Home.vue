@@ -2,6 +2,7 @@
 import HeaderComponent from '../components/HeaderComponent.vue';
 import { ref } from 'vue';
 import { computed } from 'vue';
+import FillComponent from '../components/FillComponent.vue';
 const myId = "unAltreId";
 const myCondition = false;
 
@@ -12,7 +13,11 @@ const longitud = computed(() => {
 
 const fruites = ["poma","pera","pruna"];
 
+const displayName = ref("");
 
+const setName = (e) => {
+    displayName.value = e;
+}
 </script>
 
 <template>
@@ -32,6 +37,19 @@ const fruites = ["poma","pera","pruna"];
         </li>
     </ul>
 
+    <hr/>
+
+    <h3>Hola {{ displayName }}</h3>
+
+    <!-- SLOTS i NAMED SLOTS -->
+     <FillComponent  @login="setName">
+        <template v-slot:bottom>
+            <h3>text al bottom</h3>
+        </template>
+        <template v-slot:top>
+            <h3>text al top</h3>
+        </template>       
+     </FillComponent>
 </template>
 
 <style scoped>
