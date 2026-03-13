@@ -25,6 +25,21 @@ export const useCustomerStore = defineStore("customers", () => {
         }        
     }
 
+    const getCustomerById = async (id) => {
+        loading.value = true;
+        try {       
+            const response = await fetch(`${API_URL}/${id}`);
+            const data = await response.json();
+            error.value = false;
+            return data;
+        }catch (e) {
+            error.value = true;
+            console.log("error intentant carregar el customer amb id ", id);
+        }finally {
+            loading.value = false;
+        }        
+    }
+
     const addCustomer = async (newCustomer) => {
         const response = await fetch(API_URL, {
             method: 'POST',
@@ -47,7 +62,10 @@ export const useCustomerStore = defineStore("customers", () => {
         loading,
         error,
         getCustomers,
-        addCustomer
+        addCustomer,
+        getCustomerById
 
     }
+}, {
+    persist: true
 });

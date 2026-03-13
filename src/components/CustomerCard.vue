@@ -20,6 +20,12 @@ const props = defineProps( {
         <span :class="['status-tag', props.customer.incidencies?.length > 0 ? 'active' : 'empty']">
           {{ props.customer.incidencies?.length || 0 }} assignades
         </span>
+        <div class="card-footer">
+          <router-link :to="{name: 'customer-detail', params: {id: customer.id}}">
+            <button>Veure detalls</button>
+          </router-link>
+          
+        </div>
     </div>
  
 </template>
